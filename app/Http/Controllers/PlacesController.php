@@ -13,10 +13,16 @@ class PlacesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $places = Place::orderBy('id')->paginate(10);
-        return view('places.index')->with('places', $places);
+        if (isset($request)) {
+            $search = $request->get('search');
+            $places = DB::table('places')->where('place_name', 'like', '%'.$search.'%')->orWhere('place_address', 'like', '%'.$search.'%')->paginate(10);
+            return view('places.index')->with('places', $places);
+        } else {
+            $places = Place::orderBy('id')->paginate(10);
+            return view('places.index')->with('places', $places);
+        }
     }
 
     /**
@@ -25,9 +31,6 @@ class PlacesController extends Controller
      */
     public function search(Request $request)
     {
-        $search = $request->get('search');
-        $places = DB::table('places')->where('place_name', 'like', '%'.$search.'%')->orWhere('place_address', 'like', '%'.$search.'%')->paginate(10);
-        return view('places.index')->with('places', $places);
     }
 
     /**
@@ -59,7 +62,8 @@ class PlacesController extends Controller
      */
     public function show($id)
     {
-        //
+        $place = Place::find($id);
+        return view('places.show')->with('place', $place);
     }
 
     /**

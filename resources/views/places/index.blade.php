@@ -3,7 +3,7 @@
 @section('content')
     <h1>Places</h1>
     @if (count($places) > 0)
-        <form method="GET" action="/places/search">
+        <form method="GET" action="/places">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" name="search" placeholder="Search for place or address..." aria-label="Search for place or address..." aria-describedby="button-addon2">
                 <div class="input-group-append">

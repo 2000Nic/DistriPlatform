@@ -25,5 +25,5 @@ Route::resource('routes', 'RoutesController');
 
 Route::resource('fleets', 'FleetsController');
 
-Route::get('/places/search', 'PlacesController@search');
+//Route::get('/places/search', 'PlacesController@search');
 Route::resource('places', 'PlacesController');
