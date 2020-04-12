@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Place;
+use DB;
 
 class PlacesController extends Controller
 {
@@ -15,6 +16,17 @@ class PlacesController extends Controller
     public function index()
     {
         $places = Place::orderBy('id')->paginate(10);
+        return view('places.index')->with('places', $places);
+    }
+
+    /**
+     * Display a listing of searched parts of the resource.
+     * 
+     */
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $places = DB::table('places')->where('place_name', 'like', '%'.$search.'%')->orWhere('place_address', 'like', '%'.$search.'%')->paginate(10);
         return view('places.index')->with('places', $places);
     }
 

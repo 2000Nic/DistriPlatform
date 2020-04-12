@@ -20,6 +20,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('posts', 'PostsController');
+
 Route::resource('routes', 'RoutesController');
+
 Route::resource('fleets', 'FleetsController');
+
+Route::get('/places/search', 'PlacesController@search');
 Route::resource('places', 'PlacesController');
