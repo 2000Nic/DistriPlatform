@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PagesController@index');
 
-Route::get('/admin', 'PagesController@admin');
+Route::get('/admin/places', 'PagesController@adminPlaces');
+Route::get('/admin', 'PagesController@admin')->middleware('admin');
 
-Route::get('/management', 'PagesController@manage');
+Route::get('/management', 'PagesController@manage')->middleware('manager');
 
 Auth::routes();
 

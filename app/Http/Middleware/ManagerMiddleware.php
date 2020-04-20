@@ -15,10 +15,10 @@ class ManagerMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user() && $request->user()->type != 'manager') {
-            return new Response(view('unauthorized')->with('role', 'MANAGER'));
+        if ($request->user() && $request->user()->type == 'manager' || $request->user()->type == 'admin') {
+            return $next($request);
         }
 
-        return $next($request);
+        return redirect('/home');
     }
 }

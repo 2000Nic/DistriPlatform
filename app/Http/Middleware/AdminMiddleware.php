@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Response;
 
 class AdminMiddleware
 {
@@ -16,7 +17,7 @@ class AdminMiddleware
     public function handle($request, Closure $next)
     {
         if ($request->user() && $request->user()->type != 'admin') {
-            return new Response(view('unauthorized')->with('role', 'ADMIN'));
+            return redirect('/home');
         }
 
         return $next($request);
