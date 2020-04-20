@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-@if (Auth::user()->type = 'admin')
+@guest
+    <script>window.location = "/login";</script>
+@else
+
+@if (Auth::user()->type = 'admin'))
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -89,4 +93,6 @@
 @else
     <script>window.location = "/home";</script>
 @endif
+
+@endguest
 @endsection
