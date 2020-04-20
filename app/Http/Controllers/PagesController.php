@@ -10,4 +10,14 @@ class PagesController extends Controller
     {
         return view('pages.index');
     }
+
+    public function admin()
+    {
+        return view('hidden.admin');
+    }
+
+    public function manage()
+    {
+        return view('hidden.manage');
+    }
 }

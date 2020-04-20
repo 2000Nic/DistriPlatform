@@ -38,6 +38,13 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            @if (Auth::user()->type == 'admin')
+                                <a href="/admin" class="dropdown-item">Admin Panel</a>
+                            @endif
+                            @if (Auth::user()->type == 'manager' || Auth::user()->type == 'admin')
+                                <a href="/management" class="dropdown-item">Management Panel</a>
+                            @endif
+                            
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
