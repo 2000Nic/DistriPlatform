@@ -13,11 +13,37 @@ class PagesController extends Controller
 
     public function admin()
     {
-        return view('hidden.admin');
+        if (!isset($_GET['page'])) {
+            return view('hidden.admin.index');
+        } else if ($_GET['page'] == 'places') {
+            return view('hidden.admin.places');
+        } else if ($_GET['page'] == 'users') {
+            return view('hidden.admin.users');
+        } else if ($_GET['page'] == 'routes') {
+            return view('hidden.admin.routes');
+        } else if ($_GET['page'] == 'fleet') {
+            return view('hidden.admin.fleet');
+        } else if ($_GET['page'] == 'cards') {
+            return view('hidden.admin.cards');
+        } else if ($_GET['page'] == 'posts') {
+            return view('hidden.admin.posts');
+        } 
     }
 
     public function manage()
     {
-        return view('hidden.manage');
+        if (!isset($_GET['page'])) {
+            return view('hidden.manage.index');
+        } else if ($_GET['page'] == 'places') {
+            return view('hidden.manage.places');
+        } else if ($_GET['page'] == 'routes') {
+            return view('hidden.manage.routes');
+        } else if ($_GET['page'] == 'fleet') {
+            return view('hidden.manage.fleet');
+        } else if ($_GET['page'] == 'cards') {
+            return view('hidden.manage.cards');
+        } else if ($_GET['page'] == 'posts') {
+            return view('hidden.manage.posts');
+        } 
     }
 }
