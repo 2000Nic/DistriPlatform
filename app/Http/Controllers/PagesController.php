@@ -15,6 +15,8 @@ class PagesController extends Controller
     {
         if (!isset($_GET['page'])) {
             return view('hidden.admin.index');
+        } else if ($_GET['page'] == 'places') {
+            return view('hidden.admin.places');
         } else if ($_GET['page'] == 'users') {
             return view('hidden.admin.users');
         } else if ($_GET['page'] == 'routes') {
@@ -32,6 +34,8 @@ class PagesController extends Controller
     {
         if (!isset($_GET['page'])) {
             return view('hidden.manage.index');
+        } else if ($_GET['page'] == 'places') {
+            return view('hidden.manage.places');
         } else if ($_GET['page'] == 'routes') {
             return view('hidden.manage.routes');
         } else if ($_GET['page'] == 'fleet') {
