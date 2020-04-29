@@ -29,4 +29,4 @@ Route::resource('routes', 'RoutesController');
 
 Route::resource('fleets', 'FleetsController');
 
-Route::resource('places', 'PlacesController');
+Route::resource('places', 'PlacesController')->middleware('manager');
