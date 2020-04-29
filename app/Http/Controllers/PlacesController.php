@@ -40,7 +40,7 @@ class PlacesController extends Controller
      */
     public function create()
     {
-        //
+        return view('places.create');
     }
 
     /**
@@ -51,7 +51,15 @@ class PlacesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $place = new Place;
+        $place->place_name = $_REQUEST['place-name'];
+        $place->place_phone = $_REQUEST['place-phone'];
+        $place->place_google_url = $_REQUEST['place-google-url'];
+        $place->place_remarks = $_REQUEST['place-remarks'];
+        $place->place_address = $_REQUEST['place-address'];
+        $place->save();
+
+        return redirect('/places');
     }
 
     /**

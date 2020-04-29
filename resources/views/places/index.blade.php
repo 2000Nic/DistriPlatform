@@ -2,6 +2,7 @@
 
 @section('content')
     <h1>Places</h1>
+    <a href="places/create" class="btn btn-info">Add Place</a><br><br>
     @if (count($places) > 0)
         <form method="GET" action="/places">
             <div class="input-group mb-3">

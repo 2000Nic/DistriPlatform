@@ -16,6 +16,7 @@ class CreatePlacesTable extends Migration
         Schema::create('places', function (Blueprint $table) {
             $table->id();
             $table->string('place_name');
+            $table->string('place_phone');
             $table->string('place_google_url');
             $table->string('place_remarks');
             $table->string('place_address');
