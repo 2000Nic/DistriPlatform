@@ -13,6 +13,14 @@ class PlacesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct() 
+    {
+        $this->middleware('auth');
+        $this->middleware('role:admin,manager', ['only' => ['create']]);
+        $this->middleware('role:admin,manager',   ['only' => ['edit']]);
+        $this->middleware('role:user,admin,manager',   ['only' => ['show', 'index']]);;
+    }
+
     public function index(Request $request)
     {
         if (isset($request)) {
@@ -82,7 +90,8 @@ class PlacesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $place = Place::find($id);
+        return view('places.edit')->with('place', $place);
     }
 
     /**
@@ -94,7 +103,15 @@ class PlacesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $place = Place::find($id);
+        $place->place_name = $_REQUEST['place-name'];
+        $place->place_phone = $_REQUEST['place-phone'];
+        $place->place_google_url = $_REQUEST['place-google-url'];
+        $place->place_remarks = $_REQUEST['place-remarks'];
+        $place->place_address = $_REQUEST['place-address'];
+        $place->save();
+
+        return redirect('/places');
     }
 
     /**

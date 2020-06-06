@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PagesController@index');
 
-Route::get('/admin', 'PagesController@admin')->middleware('admin');
+Route::get('/admin', 'PagesController@admin')->middleware('role:admin');
 
-Route::get('/management', 'PagesController@manage')->middleware('manager');
+Route::get('/management', 'PagesController@manage')->middleware('role:manager,admin');
 
 Auth::routes();
 
@@ -29,4 +29,5 @@ Route::resource('routes', 'RoutesController');
 
 Route::resource('fleets', 'FleetsController');
 
-Route::resource('places', 'PlacesController')->middleware('manager');
+Route::resource('places', 'PlacesController');
+
