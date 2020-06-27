@@ -2,7 +2,9 @@
 
 @section('content')
     <h1>Places</h1>
+    @if(Auth::user()->type == 'admin' || Auth::user()->type == 'manager')
     <a href="places/create" class="btn btn-info">Add Place</a><br><br>
+    @endif
     @if (count($places) > 0)
         <form method="GET" action="/places">
             <div class="input-group mb-3">
