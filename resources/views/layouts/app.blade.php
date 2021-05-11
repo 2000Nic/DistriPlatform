@@ -21,6 +21,8 @@
 
     <!-- Font Awesome (apparently not a font according to my brain) -->
     <script src="https://kit.fontawesome.com/47757d73c8.js" crossorigin="anonymous"></script>
+
+    @yield('head-content')
 </head>
 <body>
     <div id="app">

@@ -122,6 +122,7 @@ class PlacesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Place::destroy($id);
+        return redirect('/places');
     }
 }
